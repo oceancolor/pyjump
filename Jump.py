@@ -142,7 +142,7 @@ class Actor(object):
         
     def release(self):
         global __game_state__
-        actor.ypos = box_stand.ypos - actor_height - 10
+        self.ypos = box_stand.ypos - actor_height - 10
         __game_state__ = STATE_FLYING
         
         
@@ -391,10 +391,11 @@ if __name__ == "__main__":
                 keys = pygame.key.get_pressed()
                 if keys[K_SPACE]:
                     if __game_state__ == STATE_START:
-                        __game_state__ == STATE_READY
+                        __game_state__ = STATE_READY
                 elif keys[K_RETURN]:
                     if __game_state__ == STATE_GAMEOVER:
                         __game_state__ = STATE_WAIT
+                        #continue
                     if __game_state__ == STATE_WAIT:
                         __game_state__ = STATE_START
             elif event.type == KEYUP:
